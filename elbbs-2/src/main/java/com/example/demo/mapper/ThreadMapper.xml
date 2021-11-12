@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace = "com.example.demo.mapper.ThreadMapper">
+
+<select id="selectAll" resultType = "com.example.demo.entity.Thread">
+select * from thread order by post_day desc
+</select>
+
+<insert id="insert" parameterType = "com.example.demo.entity.Thread">
+insert into thread (name,content,post_day) values(#{name},#{content},#{post_day})
+</insert>
+
+</mapper>

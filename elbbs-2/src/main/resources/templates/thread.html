@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>投稿画面</title>
+</head>
+<body>
+
+<h1>投稿画面</h1>
+<!--
+<form th:action="@{thread/add}" method = "post" th:object = "${thread}">
+	<label>名前</label>
+	<input type = "text" name = "name" th:value = "${name}"><br>
+	<label>投稿内容</label><br>
+	<textarea name = "content" th:value = "${content}"></textarea><br>
+	<button type = "submit" name = "insert">投稿</button>
+</form>
+-->
+
+<table class = "table">
+			<tr>
+				<th>名前</th>
+				<th>投稿内容</th>
+				<th>日付</th>
+				<th></th>
+				<th></th>
+			</tr>
+			
+			<tr th:each = "thread : ${thread}" th:object = "${thread}">
+				<td><a  th:text = "${thread.name}"></a></td>
+				<td><a th:text = "${thread.content}"></a></td>
+				<td><a th:text = "${thread.post_day}"></a></td>
+				
+				<td>
+					<form th:action = "@{/thread/delete}" method = "post" th:object = "${thread}"> 
+						<input type = "hidden" name = "id" th:value = "${thread.thread_id}">
+						<button type = "submit" name = "delete">削除</button>
+					</form>
+				</td>
+				<td>
+					<form th:action="@{/thread/edit/{id} (id = *{thread_id})}">
+				
+						<button type = "submit" >編集</button>
+					</form>
+				</td>
+				</tr>
+</table>
+
+</body>
+</html>
