@@ -7,7 +7,7 @@
 <mapper namespace = "com.example.demo.mapper.ThreadMapper">
 
 <select id="selectAll" resultType = "com.example.demo.entity.Thread">
-select * from thread order by post_day desc
+select * from thread 
 </select>
 
 <insert id="insert" parameterType = "com.example.demo.entity.Thread">
